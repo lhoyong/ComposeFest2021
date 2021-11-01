@@ -16,7 +16,6 @@ import com.github.lhoyong.codelab_week1.ui.theme.CodelabWeek1Theme
 
 @Composable
 fun OnboardingScreen(onContinueClicked: () -> Unit) {
-
     Surface {
         Column(
             modifier = Modifier.fillMaxSize(),
