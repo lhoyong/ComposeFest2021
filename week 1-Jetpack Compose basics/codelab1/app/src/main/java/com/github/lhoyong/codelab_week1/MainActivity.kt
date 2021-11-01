@@ -11,11 +11,14 @@ import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.github.lhoyong.codelab_week1.ui.components.OnboardingScreen
 import com.github.lhoyong.codelab_week1.ui.theme.CodelabWeek1Theme
 
 class MainActivity : ComponentActivity() {
@@ -23,14 +26,25 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CodelabWeek1Theme {
-                MyApp()
+                var shouldShowOnboarding by remember { mutableStateOf(true) }
+
+                if (shouldShowOnboarding) {
+                    OnboardingScreen(onContinueClicked = { shouldShowOnboarding = false })
+                } else {
+                    Greetings()
+                }
             }
         }
     }
 }
 
 @Composable
-fun MyApp(names: List<String> = listOf("World", "Compose")) {
+fun MyApp() {
+    Greetings()
+}
+
+@Composable
+private fun Greetings(names: List<String> = listOf("World", "Compose")) {
     Column(modifier = Modifier.padding(vertical = 4.dp)) {
         for (name in names) {
             Greeting(name = name)
