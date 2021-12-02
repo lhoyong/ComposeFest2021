@@ -105,4 +105,7 @@ dependencies {
     androidTestImplementation "com.google.truth:truth:$rootProject.truthVersion"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$rootProject.composeVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
+
+    // m1 room build error
+    kapt("org.xerial:sqlite-jdbc:3.34.0")
 }
